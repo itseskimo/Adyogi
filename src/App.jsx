@@ -647,7 +647,7 @@ const App = () => {
       {/* Table */}
       <div className=''>
         <ul className='grid  items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))]  gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600'>
-          {visibleColumns.checked && <input type='checkbox' className='w-6 h-6' disabled onClick={() => requestSort('checked')} />}
+          {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' disabled onClick={() => requestSort('checked')} />}
           {visibleColumns.customer && <li className='flex items-center gap-3 cursor-pointer' onClick={() => requestSort('customer')}>Customer <SortIndicator column="customer" /></li>}
           {visibleColumns.email && <li className='flex items-center gap-3 cursor-pointer' onClick={() => requestSort('email')}>Email <SortIndicator column="email" /></li>}
           {visibleColumns.created && <li className='flex items-center gap-3 cursor-pointer' onClick={() => requestSort('created')}>Created  <SortIndicator column="created" />   </li>}
@@ -795,9 +795,9 @@ const App = () => {
 
       <div className='flex items-center justify-end gap-4 m-6'>
 
-        <button className='bg-red-500 text-white px-4 py-2 rounded' onClick={() => exportToPDF(res, 'invoices.pdf')}>Download PDF</button>
-        <button className='bg-green-500 text-white px-4 py-2 rounded' onClick={() => exportToExcel(res, 'invoices.xlsx')}>Download EXCEL</button>
-        <button className='bg-blue-500 text-white px-4 py-2 rounded' onClick={() => exportToCSV(res, 'invoices.csv')}>Download CSV</button>
+        <button className='bg-red-500 text-white text-sm sm:text-base px-2 sm:px-4 py-2 rounded' onClick={() => exportToPDF(res, 'invoices.pdf')}>Download PDF</button>
+        <button className='bg-green-500 text-white text-sm sm:text-base px-2 sm:px-4 py-2 rounded' onClick={() => exportToExcel(res, 'invoices.xlsx')}>Download EXCEL</button>
+        <button className='bg-blue-500 text-white text-sm sm:text-base px-2 sm:px-4 py-2 rounded' onClick={() => exportToCSV(res, 'invoices.csv')}>Download CSV</button>
       </div>
       <Pagination totalCount={data} />
 
