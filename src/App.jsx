@@ -675,8 +675,8 @@ const App = () => {
                 <span className='text-sm'>{item.id}</span>
               </div>
             </li>}
-            {visibleColumns.email && <li className='grid grid-cols-2 '> <span className='sm:hidden block'>Email</span>  <span>{item.email}</span></li>}
-            {visibleColumns.created && <div className='grid grid-cols-2 '>
+            {visibleColumns.email && <li className='grid grid-cols-2 sm:grid-cols-1 '> <span className='sm:hidden block'>Email</span>  <span>{item.email}</span></li>}
+            {visibleColumns.created && <div className='grid grid-cols-2 sm:grid-cols-1'>
               <span className='sm:hidden block'>Created At</span>
 
               <li className='flex flex-col'>
@@ -684,7 +684,7 @@ const App = () => {
               <span className='text-sm'>{formatTime(item.created)}</span>
             </li>
               </div>}
-            {visibleColumns.dueDate && <div className='grid grid-cols-2 '>
+            {visibleColumns.dueDate && <div className='grid grid-cols-2 sm:grid-cols-1'>
               <span className='sm:hidden block'>Due Date</span>
 
               <li className='flex flex-col'>
@@ -692,8 +692,8 @@ const App = () => {
               <span className='text-sm'>{formatTime(item.dueDate)}</span>
             </li>
               </div>}
-            {visibleColumns.amount && <li className='grid grid-cols-2 '> <span className='sm:hidden block'>Amount</span>  <span>{item.amount}</span></li>}
-            {visibleColumns.status && <li className='grid grid-cols-2 '> <span className='sm:hidden block'>Status</span>  <span>{item.status}</span></li>}
+            {visibleColumns.amount && <li className='grid grid-cols-2 sm:grid-cols-1'> <span className='sm:hidden block'>Amount</span>  <span>{item.amount}</span></li>}
+            {visibleColumns.status && <li className='grid grid-cols-2 sm:grid-cols-1'> <span className='sm:hidden block'>Status</span>  <span>{item.status}</span></li>}
           </ul>
         ))}
 
