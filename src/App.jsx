@@ -30,7 +30,7 @@ const App = () => {
     amount: true,
     status: true
   });
-
+console.log(visibleColumns)
   // Sorting logic
   const requestSort = (key) => {
     let direction = 'ascending';
@@ -222,14 +222,14 @@ const App = () => {
             </ul>
             {
               dropdown && <div ref={dropRef} className='bg-white p-3 grid grid-cols-2  absolute left-[-185px] top-12 w-60 shadow shadow-gray-300 rounded-lg text-sm sm:text-base'>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('checked')}><input type='checkbox' checked={!visibleColumns.checked} />Checked</button>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('customer')}><input type='checkbox' checked={!visibleColumns.customer} /> Customer</button>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('email')}><input type='checkbox' checked={!visibleColumns.email} />Email</button>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('created')}><input type='checkbox' checked={!visibleColumns.created} />Created At</button>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('dueDate')}><input type='checkbox' checked={!visibleColumns.dueDate} />Due Date</button>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('amount')}><input type='checkbox' checked={!visibleColumns.amount} />Amount</button>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('status')}><input type='checkbox' checked={!visibleColumns.status} />Status</button>
-                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('action')}><input type='checkbox' checked={!visibleColumns.action} />Action</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('checked')}><input type='checkbox' checked={visibleColumns.checked} />Checked</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('customer')}><input type='checkbox' checked={visibleColumns.customer} /> Customer</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('email')}><input type='checkbox' checked={visibleColumns.email} />Email</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('created')}><input type='checkbox' checked={visibleColumns.created} />Created At</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('dueDate')}><input type='checkbox' checked={visibleColumns.dueDate} />Due Date</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('amount')}><input type='checkbox' checked={visibleColumns.amount} />Amount</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('status')}><input type='checkbox' checked={visibleColumns.status} />Status</button>
+                <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('action')}><input type='checkbox' checked={visibleColumns.action} />Action</button>
               </div>
             }
           </div>
