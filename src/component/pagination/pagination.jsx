@@ -1,11 +1,11 @@
 'use client'
-import { useState } from "react";
-import { useDispatch } from 'react-redux'
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import { setPaginationCount } from "../../redux/features/general/generalSlice";
 
 
 function Pagination({ totalCount }) {
+    const { searchItems } = useSelector((state) => state.general);
 
     const dispatch = useDispatch()
     // Page Count
@@ -16,10 +16,16 @@ function Pagination({ totalCount }) {
     useEffect(() => {
 
         // Calculate pagesCount, ensuring it's at least 1 to avoid division by zero
-        const calculatedPagesCount = Math.ceil(totalCount?.length / 10) || 1;
+
+        const calculatedPagesCount = Math.ceil(( totalCount?.length) / 10) || 1;
         setPagesCount(calculatedPagesCount)
+
+
+
+
+
         dispatch(setPaginationCount(currentPage))
-    }, [totalCount?.length]);
+    }, [totalCount?.length, searchItems]);
 
 
 

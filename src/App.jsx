@@ -2,23 +2,22 @@ import './App.css'
 import React, { useState, useEffect, useRef } from 'react';
 import Dropdown from './component/dropdown/dropdown';
 import { useSelector, useDispatch } from 'react-redux';
-import { setDropDownType } from './redux/features/general/generalSlice';
+import { setDropDownType, setSearchedData } from './redux/features/general/generalSlice';
 import ExportDocs from './component/exportDocs/exportDocs';
 import Pagination from './component/pagination/pagination';
 import { dummyJson } from './config/config';
-import { formatDate,formatTime } from './utils/utils';
+import { formatDate, formatTime } from './utils/utils';
 
 
 const App = () => {
-  const [originalData, setOriginalData] = useState(dummyJson);
   const [data, setData] = useState(dummyJson);
   const [dropdown, setDropdown] = useState(false);
   const [sideBarOpen, setSideBarOpen] = useState(false);
+  const [search, setSearch] = useState('')
   const dropRef = useRef(null)
   const sideBarRef = useRef(null)
   const dispatch = useDispatch()
-  const [search, setSearch] = useState('')
-  console.log(search)
+
   const { selectedType, paginationCount } = useSelector((state) => state.general);
 
   const [sortConfig, setSortConfig] = useState({ key: null, direction: '' });
@@ -41,7 +40,7 @@ const App = () => {
     setSortConfig({ key, direction });
   };
 
- 
+
 
   const SortIndicator = ({ column }) => {
     if (sortConfig.key !== column) return null;
@@ -114,6 +113,10 @@ const App = () => {
     return () => document.removeEventListener("click", handleClose, true);
   }, []);
 
+  useEffect(() => {
+    const output = dummyJson.filter(ele => ele.customer && ele.customer.toLowerCase().startsWith(search.toLowerCase()));
+dispatch(setSearchedData(output))
+  }, [search])
 
 
   const [amount, setAmount] = useState({ min: minAmount, max: maxAmount });
@@ -125,14 +128,14 @@ const App = () => {
     setCreatedDate('');
     setDueDate('');
     dispatch(setDropDownType(''))
-    setData(originalData)
+    setData(dummyJson)
   };
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    let temp = originalData.filter((item) => {
+    let temp = dummyJson.filter((item) => {
       // Check if createdDate matches
       let matchesCreatedDate = createdDate ? item.created.split('T')[0] === createdDate : false;
 
@@ -152,7 +155,14 @@ const App = () => {
     setData(temp)
   };
 
-
+  const getDataToShow = () => {
+    if (search) {
+      const output = dummyJson.filter(ele => ele.customer && ele.customer.toLowerCase().startsWith(search.toLowerCase()));
+      return output
+    } else {
+      return sortedData().slice(paginationCount * 10 - 10, paginationCount * 10)
+    }
+  };
 
   return (
     <div>
@@ -192,7 +202,7 @@ const App = () => {
 
           <ul onClick={() => setSideBarOpen(!sideBarOpen)} className='flex items-center gap-2 cursor-pointer border-solid border-[1px] border-gray-300 rounded-md py-2 px-4'>
             <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 3H5C3.58579 3 2.87868 3 2.43934 3.4122C2 3.8244 2 4.48782 2 5.81466V6.50448C2 7.54232 2 8.06124 2.2596 8.49142C2.5192 8.9216 2.99347 9.18858 3.94202 9.72255L6.85504 11.3624C7.49146 11.7206 7.80967 11.8998 8.03751 12.0976C8.51199 12.5095 8.80408 12.9935 8.93644 13.5872C9 13.8722 9 14.2058 9 14.8729L9 17.5424C9 18.452 9 18.9067 9.25192 19.2613C9.50385 19.6158 9.95128 19.7907 10.8462 20.1406C12.7248 20.875 13.6641 21.2422 14.3321 20.8244C15 20.4066 15 19.4519 15 17.5424V14.8729C15 14.2058 15 13.8722 15.0636 13.5872C15.1959 12.9935 15.488 12.5095 15.9625 12.0976C16.1903 11.8998 16.5085 11.7206 17.145 11.3624L20.058 9.72255C21.0065 9.18858 21.4808 8.9216 21.7404 8.49142C22 8.06124 22 7.54232 22 6.50448V5.81466C22 4.48782 22 3.8244 21.5607 3.4122C21.1213 3 20.4142 3 19 3Z" stroke="#1C274C" stroke-width="1.5" />
+              <path d="M19 3H5C3.58579 3 2.87868 3 2.43934 3.4122C2 3.8244 2 4.48782 2 5.81466V6.50448C2 7.54232 2 8.06124 2.2596 8.49142C2.5192 8.9216 2.99347 9.18858 3.94202 9.72255L6.85504 11.3624C7.49146 11.7206 7.80967 11.8998 8.03751 12.0976C8.51199 12.5095 8.80408 12.9935 8.93644 13.5872C9 13.8722 9 14.2058 9 14.8729L9 17.5424C9 18.452 9 18.9067 9.25192 19.2613C9.50385 19.6158 9.95128 19.7907 10.8462 20.1406C12.7248 20.875 13.6641 21.2422 14.3321 20.8244C15 20.4066 15 19.4519 15 17.5424V14.8729C15 14.2058 15 13.8722 15.0636 13.5872C15.1959 12.9935 15.488 12.5095 15.9625 12.0976C16.1903 11.8998 16.5085 11.7206 17.145 11.3624L20.058 9.72255C21.0065 9.18858 21.4808 8.9216 21.7404 8.49142C22 8.06124 22 7.54232 22 6.50448V5.81466C22 4.48782 22 3.8244 21.5607 3.4122C21.1213 3 20.4142 3 19 3Z" stroke="#1C274C" strokeWidth="1.5" />
             </svg>
             <li>Filter</li>
           </ul>
@@ -237,12 +247,12 @@ const App = () => {
           {visibleColumns.status && <li className='flex items-center gap-1 sm:gap-3 cursor-pointer' onClick={() => requestSort('status')}>Status <SortIndicator column="status" /></li>}
         </ul>
 
-        {sortedData().slice(paginationCount * 10 - 10, paginationCount * 10).filter((ele) => ele.customer && ele?.customer?.toLowerCase().startsWith(search.toLowerCase())).map((item, index) => (
+        {getDataToShow().map((item, index) => (
           <ul key={index} className={` grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]' : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-5 sm:py-2 px-6`}>
             {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' />}
             {visibleColumns.customer && <li className='flex items-center gap-3'>
-              <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="40px" height="40px" viewBox="796 796 200 200" enable-background="new 796 796 200 200" xml:space="preserve">
+              <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+                width="40px" height="40px" viewBox="796 796 200 200" enableBackground="new 796 796 200 200" xmlSpace="preserve">
                 <path d="M896,796c-55.14,0-99.999,44.86-99.999,100c0,55.141,44.859,100,99.999,100c55.141,0,99.999-44.859,99.999-100
 	C995.999,840.86,951.141,796,896,796z M896.639,827.425c20.538,0,37.189,19.66,37.189,43.921c0,24.257-16.651,43.924-37.189,43.924
 	s-37.187-19.667-37.187-43.924C859.452,847.085,876.101,827.425,896.639,827.425z M896,983.86

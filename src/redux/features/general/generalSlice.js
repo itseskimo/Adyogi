@@ -6,10 +6,14 @@ const GeneralSlice = createSlice({
     initialState: {
         selectedType: null,
         paginationCount: 0,
+        searchItems:false
     },
 
     reducers: {
 
+        setSearchedData(state, action) {
+            state.searchItems = action.payload
+        },
         setDropDownType(state, action) {
             state.selectedType = action.payload
         },
@@ -25,4 +29,4 @@ const GeneralSlice = createSlice({
 });
 
 export default GeneralSlice.reducer;
-export const { setDropDownType, setPaginationCount } = GeneralSlice.actions
+export const { setDropDownType, setPaginationCount,setSearchedData } = GeneralSlice.actions
