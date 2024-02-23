@@ -1,14 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
-
 const GeneralSlice = createSlice({
     name: "general",
 
     initialState: {
         selectedType: null,
-        paginationInfo: [],
         paginationCount: 0,
     },
 
@@ -17,9 +13,7 @@ const GeneralSlice = createSlice({
         setDropDownType(state, action) {
             state.selectedType = action.payload
         },
-        setPaginationType(state, action) {
-            state.paginationInfo = action.payload
-        },
+
         setPaginationCount(state, action) {
             state.paginationCount = action.payload
         }
@@ -31,4 +25,4 @@ const GeneralSlice = createSlice({
 });
 
 export default GeneralSlice.reducer;
-export const { setDropDownType, setPaginationType,setPaginationCount } = GeneralSlice.actions
+export const { setDropDownType, setPaginationCount } = GeneralSlice.actions

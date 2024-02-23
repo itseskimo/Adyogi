@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { setDropDownType } from '../../redux/features/general/generalSlice';
 import { useDispatch, useSelector } from 'react-redux';
+
 function dropdown({ options }) {
     const { selectedType } = useSelector((state) => state.general);
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState();
     const dropdownRef = useRef(null);
     const dispatch = useDispatch()
 
@@ -16,7 +16,6 @@ function dropdown({ options }) {
 
     const handleOptionClick = (option) => {
         dispatch(setDropDownType(option))
-        // setSelectedOption(option);
         toggleDropdown();
     };
 

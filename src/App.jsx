@@ -6,346 +6,20 @@ import { setDropDownType } from './redux/features/general/generalSlice';
 import { jsPDF } from "jspdf";
 import * as XLSX from 'xlsx';
 import Pagination from './component/pagination/pagination';
+import { dummyJson } from './config/config';
 
-export const res = [
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Jenkins",
-    "email": "reter47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Raju Jenkins",
-    "email": "retha.lehn@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "205.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Sachin Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "330.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Mahendra Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Jindal",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Sri",
-    "email": "retha.le47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Bamzai",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Jenkins",
-    "email": "retehner47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Jenkins",
-    "email": "r47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Jenkins",
-    "email": "rethner47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Jenkins",
-    "email": "ret47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Jenkins",
-    "email": "re47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  {
-    "id": 'INV-39512',
-    "customer": "Camille Jenkins",
-    "email": "rether47@hotmail.com",
-    'created': "2022-10-22T02:15:00",
-    'dueDate': "2024-01-14T02:15:00",
-    "amount": "295.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-35515',
-    "customer": "Genevieve Hammes",
-    "email": "bernard63@yahoo.com",
-    'created': "2021-11-22T02:15:00",
-    'dueDate': "2024-01-09T03:02:00",
-    "amount": "350.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-65015',
-    "customer": "Alejandro Reichert",
-    "email": "wava.muller47@gmail.com",
-    'created': "2023-10-22T02:10:00",
-    'dueDate': "2024-01-04T03:15:00",
-    "amount": "475.00",
-    "status": "Draft"
-  },
-  {
-    "id": 'INV-85415',
-    "customer": "Carl Bode",
-    "email": "virgil.sikles@hotmail.com",
-    'created': "2022-02-22T02:15:00",
-    'dueDate': "2024-02-01T03:10:00",
-    "amount": "295.00",
-    "status": "Sent"
-  },
-  // ... more data objects
-]
 
 
 const App = () => {
-  const [originalData, setOriginalData] = useState(res);
-  const [data, setData] = useState(res);
+  const [originalData, setOriginalData] = useState(dummyJson);
+  const [data, setData] = useState(dummyJson);
   const [dropdown, setDropdown] = useState(false);
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const dropRef = useRef(null)
   const sideBarRef = useRef(null)
   const dispatch = useDispatch()
-const [search,setSearch]=useState('')
-console.log(search)
+  const [search, setSearch] = useState('')
+  console.log(search)
   const { selectedType, paginationCount } = useSelector((state) => state.general);
 
   const [sortConfig, setSortConfig] = useState({ key: null, direction: '' });
@@ -410,8 +84,8 @@ console.log(search)
   };
 
 
-  const maxAmount = Math.max(...res.map(invoice => parseFloat(invoice.amount)))
-  const minAmount = Math.min(...res.map(invoice => parseFloat(invoice.amount)));
+  const maxAmount = Math.max(...data.map(invoice => parseFloat(invoice.amount)))
+  const minAmount = Math.min(...data.map(invoice => parseFloat(invoice.amount)));
   const totalAmt = data.slice(paginationCount * 10 - 10, paginationCount * 10).reduce((accumulator, currentValue) => {
     return accumulator + parseFloat(currentValue.amount);
   }, 0).toFixed(2);
@@ -604,7 +278,7 @@ console.log(search)
             type="text"
             className="border-solid border-[1px] border-gray-300 rounded-md outline-none  py-[10px] pl-12 pr-2 w-full text-[#4C5864] placeholder:text-sm  placeholder:text-[#4C5864]"
             placeholder="Search by anything..."
-            onChange={(e)=>setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 
@@ -648,7 +322,7 @@ console.log(search)
 
       {/* Table */}
       <div className=''>
-        <ul className={`flex justify-between  sm:grid  items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'  : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600 text-xs sm:text-base`}>
+        <ul className={`flex justify-between  sm:grid  items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]' : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600 text-xs sm:text-base`}>
           {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' disabled onClick={() => requestSort('checked')} />}
           {visibleColumns.customer && <li className='flex items-center gap-1 sm:gap-3 cursor-pointer' onClick={() => requestSort('customer')}>Customer <SortIndicator column="customer" /></li>}
           {visibleColumns.email && <li className='flex items-center gap-1 sm:gap-3 cursor-pointer' onClick={() => requestSort('email')}>Email <SortIndicator column="email" /></li>}
@@ -659,7 +333,7 @@ console.log(search)
         </ul>
 
         {sortedData().slice(paginationCount * 10 - 10, paginationCount * 10).filter((ele) => ele.customer && ele?.customer?.toLowerCase().startsWith(search.toLowerCase())).map((item, index) => (
-          <ul key={index} className={` grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'  : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-5 sm:py-2 px-6`}>
+          <ul key={index} className={` grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]' : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-5 sm:py-2 px-6`}>
             {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' />}
             {visibleColumns.customer && <li className='flex items-center gap-3'>
               <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -682,18 +356,18 @@ console.log(search)
               <span className='sm:hidden block'>Created At</span>
 
               <li className='flex flex-col'>
-              <span>{formatDate(item.created)}</span>
-              <span className='text-sm'>{formatTime(item.created)}</span>
-            </li>
-              </div>}
+                <span>{formatDate(item.created)}</span>
+                <span className='text-sm'>{formatTime(item.created)}</span>
+              </li>
+            </div>}
             {visibleColumns.dueDate && <div className='grid grid-cols-2 sm:grid-cols-1'>
               <span className='sm:hidden block'>Due Date</span>
 
               <li className='flex flex-col'>
-              <span>{formatDate(item.dueDate)}</span>
-              <span className='text-sm'>{formatTime(item.dueDate)}</span>
-            </li>
-              </div>}
+                <span>{formatDate(item.dueDate)}</span>
+                <span className='text-sm'>{formatTime(item.dueDate)}</span>
+              </li>
+            </div>}
             {visibleColumns.amount && <li className='grid grid-cols-2 sm:grid-cols-1'> <span className='sm:hidden block'>Amount</span>  <span>{item.amount}</span></li>}
             {visibleColumns.status && <li className='grid grid-cols-2 sm:grid-cols-1'> <span className='sm:hidden block'>Status</span>  <span>{item.status}</span></li>}
           </ul>

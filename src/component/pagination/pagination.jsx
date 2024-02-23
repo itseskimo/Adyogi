@@ -17,9 +17,6 @@ function Pagination({ totalCount }) {
 
         // Calculate pagesCount, ensuring it's at least 1 to avoid division by zero
         const calculatedPagesCount = Math.ceil(totalCount?.length / 10) || 1;
-        // Update the state
-        console.log(totalCount.length,calculatedPagesCount)
-
         setPagesCount(calculatedPagesCount)
         dispatch(setPaginationCount(currentPage))
     }, [totalCount?.length]);
