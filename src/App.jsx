@@ -580,7 +580,7 @@ const App = () => {
       {/* Navbar */}
       <nav className='flex items-center justify-between py-2 px-6'>
 
-        <div className="flex items-center relative w-[20%] min-w-28">
+        <div className="flex items-center relative w-[20%] min-w-40">
           <svg
             className="absolute  w-10 left-1  px-2 cursor-pointer"
             width="20"
@@ -601,13 +601,13 @@ const App = () => {
           <input
             id="search"
             type="text"
-            className="border-solid border-[1px] border-gray-300 rounded-md outline-none  py-[10px] pl-12 pr-2 w-full text-[#4C5864] placeholder:text-[12px] lg:placeholder:text-[14px] placeholder:text-[#4C5864]"
+            className="border-solid border-[1px] border-gray-300 rounded-md outline-none  py-[10px] pl-12 pr-2 w-full text-[#4C5864] placeholder:text-sm  placeholder:text-[#4C5864]"
             placeholder="Search by anything..."
           />
         </div>
 
 
-        <div className='flex items-center gap-8'>
+        <div className='flex items-center gap-4 sm:gap-8'>
 
           <ul onClick={() => setSideBarOpen(!sideBarOpen)} className='flex items-center gap-2 cursor-pointer border-solid border-[1px] border-gray-300 rounded-md py-2 px-4'>
             <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -625,7 +625,7 @@ const App = () => {
 
             </ul>
             {
-              dropdown && <div ref={dropRef} className='bg-white p-3 grid grid-cols-2  absolute left-[-185px] top-12 w-60 shadow shadow-gray-300 rounded-lg'>
+              dropdown && <div ref={dropRef} className='bg-white p-3 grid grid-cols-2  absolute left-[-185px] top-12 w-60 shadow shadow-gray-300 rounded-lg text-sm sm:text-base'>
                 <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('checked')}><input type='checkbox' checked={!visibleColumns.checked} />Checked</button>
                 <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('customer')}><input type='checkbox' checked={!visibleColumns.customer} /> Customer</button>
                 <button className='self-start justify-self-start flex items-center gap-2 hover:bg-slate-100 duration-500 py-2 w-full' onClick={() => toggleColumnVisibility('email')}><input type='checkbox' checked={!visibleColumns.email} />Email</button>
