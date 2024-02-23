@@ -47,7 +47,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Raju Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "retha.lehn@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "205.00",
@@ -83,7 +83,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Sri",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "retha.le47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
@@ -119,7 +119,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "retehner47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
@@ -155,7 +155,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "r47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
@@ -191,7 +191,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "rethner47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
@@ -227,7 +227,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "ret47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
@@ -263,7 +263,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "re47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
@@ -299,7 +299,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "rether47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
