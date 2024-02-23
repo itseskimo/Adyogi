@@ -17,13 +17,10 @@ function Pagination({ totalCount }) {
 
         // Calculate pagesCount, ensuring it's at least 1 to avoid division by zero
 
-        const calculatedPagesCount = Math.ceil(( totalCount?.length) / 10) || 1;
-        setPagesCount(calculatedPagesCount)
-
-
-
-
-
+        // Only calculate and set pagesCount if searchItems is falsy.
+        const calculatedPagesCount = Math.ceil((searchItems?.length || totalCount?.length) / 10) || 1;
+        console.log(calculatedPagesCount,searchItems?.length , totalCount?.length)
+        setPagesCount(calculatedPagesCount);
         dispatch(setPaginationCount(currentPage))
     }, [totalCount?.length, searchItems]);
 
@@ -108,32 +105,31 @@ function Pagination({ totalCount }) {
     return (
         <>
             <>
+                    <ul className="flex items-center justify-center gap-1 pb-10">
 
-                <ul className="flex items-center justify-center gap-1 pb-10">
-
-                    <button
-                        onClick={handlePrevbtn}
-                        className="bg-gray-400 text-white px-4 text-center rounded-md py-2 cursor-pointer"
-                        disabled={currentPage === pages[0] ? true : false}
-                    >
-                        Prev
-                    </button>
+                        <button
+                            onClick={handlePrevbtn}
+                            className="bg-gray-400 text-white px-4 text-center rounded-md py-2 cursor-pointer"
+                            disabled={currentPage === pages[0] ? true : false}
+                        >
+                            Prev
+                        </button>
 
 
-                    {pageDecrementBtn}
-                    {renderPageNumbers}
-                    {pageIncrementBtn}
+                        {pageDecrementBtn}
+                        {renderPageNumbers}
+                        {pageIncrementBtn}
 
-                    <button
-                        onClick={handleNextbtn}
-                        className="bg-gray-400 text-white px-4 text-center rounded-md py-2 cursor-pointer"
-                        disabled={currentPage === pages[pages.length - 1] ? true : false}
-                    >
-                        Next
-                    </button>
+                        <button
+                            onClick={handleNextbtn}
+                            className="bg-gray-400 text-white px-4 text-center rounded-md py-2 cursor-pointer"
+                            disabled={currentPage === pages[pages.length - 1] ? true : false}
+                        >
+                            Next
+                        </button>
 
-                </ul>
-
+                    </ul>
+                
             </>
 
 

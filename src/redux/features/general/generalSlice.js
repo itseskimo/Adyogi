@@ -6,7 +6,7 @@ const GeneralSlice = createSlice({
     initialState: {
         selectedType: null,
         paginationCount: 0,
-        searchItems:false
+        searchItems:null
     },
 
     reducers: {

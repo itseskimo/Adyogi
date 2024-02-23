@@ -114,8 +114,14 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const output = dummyJson.filter(ele => ele.customer && ele.customer.toLowerCase().startsWith(search.toLowerCase()));
-dispatch(setSearchedData(output))
+    if (search) {
+      const output = dummyJson.filter(ele => ele.customer && ele.customer.toLowerCase().startsWith(search.toLowerCase()));
+      dispatch(setSearchedData(output))
+    }
+    if(search.length === 0){
+      setData(dummyJson)
+      dispatch(setSearchedData(0))
+    }
   }, [search])
 
 
@@ -151,7 +157,6 @@ dispatch(setSearchedData(output))
       return matchesDueDate && withinAmountRange && matchesSelectedType && matchesCreatedDate
 
     });
-    console.log(temp)
     setData(temp)
   };
 
