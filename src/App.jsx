@@ -646,7 +646,7 @@ const App = () => {
 
       {/* Table */}
       <div className=''>
-        <ul className='grid  grid-cols-[50px,repeat(auto-fit,minmax(40px,1fr))] gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600'>
+        <ul className='grid  items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))]  gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600'>
           {visibleColumns.checked && <input type='checkbox' className='w-6 h-6' disabled onClick={() => requestSort('checked')} />}
           {visibleColumns.customer && <li className='flex items-center gap-3 cursor-pointer' onClick={() => requestSort('customer')}>Customer <SortIndicator column="customer" /></li>}
           {visibleColumns.email && <li className='flex items-center gap-3 cursor-pointer' onClick={() => requestSort('email')}>Email <SortIndicator column="email" /></li>}
@@ -657,8 +657,8 @@ const App = () => {
         </ul>
 
         {sortedData().slice(paginationCount * 10 - 10, paginationCount * 10).map((item, index) => (
-          <ul key={index} className='grid items-center grid-cols-[50px,repeat(auto-fit,minmax(50px,1fr))] gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-2 px-6'>
-            {visibleColumns.checked && <input type='checkbox' className='w-6 h-6' />}
+          <ul key={index} className='grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))]  gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-2 px-6'>
+            {visibleColumns.checked && <input  type='checkbox' className='w-6 h-6 hidden xl:block' />}
             {visibleColumns.customer && <li className='flex items-center gap-3'>
               <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 width="40px" height="40px" viewBox="796 796 200 200" enable-background="new 796 796 200 200" xml:space="preserve">
@@ -691,14 +691,14 @@ const App = () => {
 
 
 
-        <ul className='grid  grid-cols-[50px,repeat(auto-fit,minmax(40px,1fr))] gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600'>
-          {visibleColumns.checked && <li className='flex items-center gap-3 cursor-pointer' >-</li>}
-          {visibleColumns.customer && <li className='flex items-center gap-3 cursor-pointer' >-</li>}
-          {visibleColumns.email && <li className='flex items-center gap-3 cursor-pointer' >-</li>}
-          {visibleColumns.created && <li className='flex items-center gap-3 cursor-pointer'>-</li>}
-          {visibleColumns.dueDate && <li className='flex items-center gap-3 cursor-pointer' >TOTAL</li>}
+        <ul className='grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600'>
+          {visibleColumns.checked && <li className=' cursor-pointer xl:block hidden' >-</li>}
+          {visibleColumns.customer && <li className=' cursor-pointer xl:block hidden' >-</li>}
+          {visibleColumns.email && <li className=' cursor-pointer xl:block hidden' >-</li>}
+          {visibleColumns.created && <li className=' cursor-pointer xl:block hidden'>-</li>}
+          {visibleColumns.dueDate && <li className=' gap-3 cursor-pointer' >TOTAL</li>}
           {visibleColumns.amount && <li className='flex items-center gap-3 cursor-pointer' >{totalAmt}</li>}
-          {visibleColumns.status && <li className='flex items-center gap-3 cursor-pointer' >-</li>}
+          {visibleColumns.status && <li className=' cursor-pointer xl:block hidden' >-</li>}
         </ul>
       </div>
 
