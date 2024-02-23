@@ -646,7 +646,7 @@ const App = () => {
 
       {/* Table */}
       <div className=''>
-        <ul className='flex justify-between  sm:grid  items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))]  gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600 text-xs sm:text-base'>
+        <ul className={`flex justify-between  sm:grid  items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'  : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 bg-[#f1f1f1] py-2 px-6 text-gray-600 text-xs sm:text-base`}>
           {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' disabled onClick={() => requestSort('checked')} />}
           {visibleColumns.customer && <li className='flex items-center gap-1 sm:gap-3 cursor-pointer' onClick={() => requestSort('customer')}>Customer <SortIndicator column="customer" /></li>}
           {visibleColumns.email && <li className='flex items-center gap-1 sm:gap-3 cursor-pointer' onClick={() => requestSort('email')}>Email <SortIndicator column="email" /></li>}
@@ -657,7 +657,7 @@ const App = () => {
         </ul>
 
         {sortedData().slice(paginationCount * 10 - 10, paginationCount * 10).map((item, index) => (
-          <ul key={index} className=' grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))]  gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-5 sm:py-2 px-6'>
+          <ul key={index} className={` grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'  : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-5 sm:py-2 px-6`}>
             {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' />}
             {visibleColumns.customer && <li className='flex items-center gap-3'>
               <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
