@@ -344,7 +344,8 @@ const App = () => {
   const dropRef = useRef(null)
   const sideBarRef = useRef(null)
   const dispatch = useDispatch()
-
+const [search,setSearch]=useState('')
+console.log(search)
   const { selectedType, paginationCount } = useSelector((state) => state.general);
 
   const [sortConfig, setSortConfig] = useState({ key: null, direction: '' });
@@ -603,6 +604,7 @@ const App = () => {
             type="text"
             className="border-solid border-[1px] border-gray-300 rounded-md outline-none  py-[10px] pl-12 pr-2 w-full text-[#4C5864] placeholder:text-sm  placeholder:text-[#4C5864]"
             placeholder="Search by anything..."
+            onChange={(e)=>setSearch(e.target.value)}
           />
         </div>
 
@@ -656,7 +658,7 @@ const App = () => {
           {visibleColumns.status && <li className='flex items-center gap-1 sm:gap-3 cursor-pointer' onClick={() => requestSort('status')}>Status <SortIndicator column="status" /></li>}
         </ul>
 
-        {sortedData().slice(paginationCount * 10 - 10, paginationCount * 10).map((item, index) => (
+        {sortedData().slice(paginationCount * 10 - 10, paginationCount * 10).filter((ele) => ele.customer && ele?.customer?.toLowerCase().startsWith(search.toLowerCase())).map((item, index) => (
           <ul key={index} className={` grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ${!visibleColumns.checked ? 'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]'  : 'xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))] '}   gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-5 sm:py-2 px-6`}>
             {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' />}
             {visibleColumns.customer && <li className='flex items-center gap-3'>
