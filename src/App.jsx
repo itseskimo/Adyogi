@@ -658,7 +658,7 @@ const App = () => {
 
         {sortedData().slice(paginationCount * 10 - 10, paginationCount * 10).map((item, index) => (
           <ul key={index} className='grid items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-[50px,repeat(auto-fit,minmax(150px,1fr))]  gap-4 border-solid border-b-[1px] border-[[#f1f1f1]] py-2 px-6'>
-            {visibleColumns.checked && <input  type='checkbox' className='w-6 h-6 hidden xl:block' />}
+            {visibleColumns.checked && <input type='checkbox' className='w-6 h-6 hidden xl:block' />}
             {visibleColumns.customer && <li className='flex items-center gap-3'>
               <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 width="40px" height="40px" viewBox="796 796 200 200" enable-background="new 796 796 200 200" xml:space="preserve">
@@ -675,17 +675,25 @@ const App = () => {
                 <span className='text-sm'>{item.id}</span>
               </div>
             </li>}
-            {visibleColumns.email && <li>{item.email}</li>}
-            {visibleColumns.created && <li className='flex flex-col'>
+            {visibleColumns.email && <li className='grid grid-cols-2 '> <span className='sm:hidden block'>Email</span>  <span>{item.email}</span></li>}
+            {visibleColumns.created && <div className='grid grid-cols-2 '>
+              <span className='sm:hidden block'>Created At</span>
+
+              <li className='flex flex-col'>
               <span>{formatDate(item.created)}</span>
               <span className='text-sm'>{formatTime(item.created)}</span>
-            </li>}
-            {visibleColumns.dueDate && <li className='flex flex-col'>
+            </li>
+              </div>}
+            {visibleColumns.dueDate && <div className='grid grid-cols-2 '>
+              <span className='sm:hidden block'>Due Date</span>
+
+              <li className='flex flex-col'>
               <span>{formatDate(item.dueDate)}</span>
               <span className='text-sm'>{formatTime(item.dueDate)}</span>
-            </li>}
-            {visibleColumns.amount && <li>{item.amount}</li>}
-            {visibleColumns.status && <li>{item.status}</li>}
+            </li>
+              </div>}
+            {visibleColumns.amount && <li className='grid grid-cols-2 '> <span className='sm:hidden block'>Amount</span>  <span>{item.amount}</span></li>}
+            {visibleColumns.status && <li className='grid grid-cols-2 '> <span className='sm:hidden block'>Status</span>  <span>{item.status}</span></li>}
           </ul>
         ))}
 
