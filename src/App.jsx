@@ -11,7 +11,7 @@ export const res = [
   {
     "id": 'INV-39512',
     "customer": "Camille Jenkins",
-    "email": "retha.lehner47@hotmail.com",
+    "email": "reter47@hotmail.com",
     'created': "2022-10-22T02:15:00",
     'dueDate': "2024-01-14T02:15:00",
     "amount": "295.00",
